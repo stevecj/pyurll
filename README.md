@@ -6,9 +6,8 @@ This project and the contents of this file are in early stages of
 development.
 
 ## URL structure breakdown
-Here is an example of the primary conceptual breakdown of a full URL
-that includes all optional parts into components and sub-components
-modeled in this package.
+Here is an example of a full URL that includes all optional parts,
+and how its component parts are modeled in this package.
 
 - URL: http://www.example.com:80/path/to/resource?key1=value1&key2=value2#PlaceInDocument
   - Network URL: http://www.example.com:80/path/to/resource?key1=value1&key2=value2
@@ -41,12 +40,12 @@ is not sent to the server as part of a network request.
 
 ### Fragment Part and Fragment
 The Fragment Part is the portion of the URL that is used by the client
-to identify a location within content after receiving it in a
+to identify a location within content after receiving  content in a
 response.  It is the part of the URL starting with "#" and continuing
 to the end of the URL string.
 
-The Fragment is the portion of the Fragment Part following the initial
-"#".
+The Fragment is the portion of the Fragment Part after (not including)
+ the "#".
 
 In other contexts, an Fragment Part or Fragment may often be referred
 to as an Anchor or a Hash.
@@ -58,12 +57,11 @@ The host and port number to which a connection can be established.
 The path to the resource to retrieve from the Netloc, including the
 Query Part if applicable.
 
-In other contexts, a Full Path often simply referred to as a Path.
+In other contexts, a Full Path is often simply referred to as a Path.
 
 ### Scheme Part and Scheme
-The Scheme Part is the part of the URL that specifies the URI
-scheme.  When present in a URL, it is at the beginning, and it ends
-with "://".
+The Scheme Part is the part of the URL that specifies the URI scheme.
+When present in a URL, it is at the beginning, and it ends with "://".
 
 The scheme is the actual name of the scheme that precedes the "://".
 
@@ -78,7 +76,7 @@ a Host.  This package uses Netloc to be consistent with the
 terminology used in Python's netlib package.
 
 ### Hostname
-Specifies the host to connect to.  That can be either a domain name or
+Specifies the host to connect to.  It can be either a domain name or
 an IP address.
 
 ### Port Part and Port
@@ -99,4 +97,5 @@ Path.
 The Query Part is the portion of the full path that starts with a "?"
 and includes all of the remaining characters in the full path part.
 
-The Query is the portion of the query part following the initial "?".
+The Query is the portion of the query part after (not including) the
+"?".
