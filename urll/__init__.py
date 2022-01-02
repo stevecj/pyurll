@@ -87,9 +87,21 @@ class Origin:
 class FullPath:
     def __init__(self, full_path_text):
         self._init_text = full_path_text
+        parsed = urlparse(full_path_text)
+
+        self._path = parsed.path
+        self._query = parsed.query
 
     def __str__(self):
         return self._init_text
+
+    @property
+    def pathname(self):
+        return Pathname(self._path)
+
+    @property
+    def query_part(self):
+        return QueryPart(f'?{self._query}')
 
 
 class SchemePart:
@@ -103,6 +115,22 @@ class SchemePart:
 class Netloc:
     def __init__(self, netloc_text):
         self._init_text = netloc_text
+
+    def __str__(self):
+        return self._init_text
+
+
+class Pathname:
+    def __init__(self, netloc_text):
+        self._init_text = netloc_text
+
+    def __str__(self):
+        return self._init_text
+
+
+class QueryPart:
+    def __init__(self, querypart_text):
+        self._init_text = querypart_text
 
     def __str__(self):
         return self._init_text
