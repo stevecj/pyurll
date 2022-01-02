@@ -134,6 +134,14 @@ class Netloc:
     def __str__(self):
         return self._init_text
 
+    @property
+    def hostname(self):
+        return Hostname(self._init_text.split(':')[0])
+
+    @property
+    def port_part(self):
+        return PortPart(':' + self._init_text.split(':')[1])
+
 
 class Pathname:
     def __init__(self, netloc_text):
@@ -146,6 +154,22 @@ class Pathname:
 class QueryPart:
     def __init__(self, querypart_text):
         self._init_text = querypart_text
+
+    def __str__(self):
+        return self._init_text
+
+
+class Hostname:
+    def __init__(self, hostname_text):
+        self._init_text = hostname_text
+
+    def __str__(self):
+        return self._init_text
+
+
+class PortPart:
+    def __init__(self, portpart_text):
+        self._init_text = portpart_text
 
     def __str__(self):
         return self._init_text
