@@ -107,6 +107,21 @@ class FullPath:
 class SchemePart:
     def __init__(self, scheme_part_text):
         self._init_text = scheme_part_text
+        parsed = urlparse(scheme_part_text)
+
+        self._scheme = parsed.scheme
+
+    def __str__(self):
+        return self._init_text
+
+    @property
+    def scheme(self):
+        return Scheme(self._scheme)
+
+
+class Scheme:
+    def __init__(self, scheme_text):
+        self._init_text = scheme_text
 
     def __str__(self):
         return self._init_text
