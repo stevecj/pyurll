@@ -9,7 +9,7 @@ FULL_URL_TEXT = (
 )
 
 
-class TestBuiltFromFullURL:
+class TestBuiltFromFullURLText:
 
     @pytest.fixture
     def url_inst(self):

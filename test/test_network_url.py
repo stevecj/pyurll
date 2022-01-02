@@ -9,7 +9,7 @@ NETWORK_URL_TEXT = (
 )
 
 
-class TestBuiltFromFullURL:
+class TestBuiltFromFullNetworkURLText:
 
     @pytest.fixture
     def netwk_url_inst(self):

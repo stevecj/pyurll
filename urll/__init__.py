@@ -51,6 +51,18 @@ class FragmentPart:
     def __str__(self):
         return self._init_text
 
+    @property
+    def fragment(self):
+        return Fragment(self._init_text[1:])
+
+
+class Fragment:
+    def __init__(self, fragment_text):
+        self._init_text = fragment_text
+
+    def __str__(self):
+        return self._init_text
+
 
 class Origin:
     def __init__(self, origin_text):
