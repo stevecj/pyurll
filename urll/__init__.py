@@ -180,8 +180,20 @@ class Hostname:
 
 
 class PortPart:
-    def __init__(self, portpart_text):
-        self._init_text = portpart_text
+    def __init__(self, port_part_text):
+        self._init_text = port_part_text
+
+    def __str__(self):
+        return self._init_text
+
+    @property
+    def port(self):
+        return Port(self._init_text[1:])
+
+
+class Port:
+    def __init__(self, port_text):
+        self._init_text = port_text
 
     def __str__(self):
         return self._init_text
