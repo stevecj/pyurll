@@ -67,14 +67,42 @@ class Fragment:
 class Origin:
     def __init__(self, origin_text):
         self._init_text = origin_text
+        parsed = urlparse(origin_text)
+
+        self._scheme = parsed.scheme
+        self._netloc = parsed.netloc
 
     def __str__(self):
         return self._init_text
+
+    @property
+    def scheme_part(self):
+        return SchemePart(f'{self._scheme}://')
+
+    @property
+    def netloc(self):
+        return Netloc(self._netloc)
 
 
 class FullPath:
     def __init__(self, full_path_text):
         self._init_text = full_path_text
+
+    def __str__(self):
+        return self._init_text
+
+
+class SchemePart:
+    def __init__(self, scheme_part_text):
+        self._init_text = scheme_part_text
+
+    def __str__(self):
+        return self._init_text
+
+
+class Netloc:
+    def __init__(self, netloc_text):
+        self._init_text = netloc_text
 
     def __str__(self):
         return self._init_text
