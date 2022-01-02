@@ -1,0 +1,6 @@
+[flake8]
+
+# - Ignore "E221: multiple spaces before operator",
+#   "E203: whitespace before ':'", and "E272: multiple spaces before keyword"
+#   errors so we can column-align code for readabiliby & prettiness.
+extend-ignore = E221,E203,E272

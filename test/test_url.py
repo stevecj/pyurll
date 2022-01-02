@@ -15,6 +15,9 @@ class TestBuiltFromFullURL:
     def url_inst(self):
         return URL(FULL_URL_TEXT)
 
+    def test_has_full_url_text_as_stringval(self, url_inst):
+        assert str(url_inst) == FULL_URL_TEXT
+
     def test_exposes_network_url(self, url_inst):
         network_url = url_inst.network_url
         assert isinstance(network_url, NetworkURL)
