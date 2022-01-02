@@ -158,6 +158,18 @@ class QueryPart:
     def __str__(self):
         return self._init_text
 
+    @property
+    def query(self):
+        return Query(self._init_text[1:])
+
+
+class Query:
+    def __init__(self, query_text):
+        self._init_text = query_text
+
+    def __str__(self):
+        return self._init_text
+
 
 class Hostname:
     def __init__(self, hostname_text):
