@@ -3,7 +3,10 @@ An object model for manipulating URL values.
 
 ## Project status
 This project and the contents of this file are in early stages of
-development.
+development.  It does not yet function as a distribution package.
+
+See To Do section later in this document for details about what this
+package is eventually indended to do.
 
 ## URL structure breakdown
 Here is an example of a full URL that includes all optional parts,
@@ -47,8 +50,8 @@ to the end of the URL string.
 The Fragment is the portion of the Fragment Part after (not including)
  the "#".
 
-In other contexts, an Fragment Part or Fragment may often be referred
-to as an Anchor or a Hash.
+What we are calling the Fragment Part here is also frequently referred
+to as the "anchor" or "hash" elsewhere.
 
 ### Origin
 The host and port number to which a connection can be established.
@@ -57,7 +60,8 @@ The host and port number to which a connection can be established.
 The path to the resource to retrieve from the Netloc, including the
 Query Part if applicable.
 
-In other contexts, a Full Path is often simply referred to as a Path.
+What we are calling the Full Path here is also frequently referred
+to simply as the "path" elsewhere.
 
 ### Scheme Part and Scheme
 The Scheme Part is the part of the URL that specifies the URI scheme.
@@ -65,15 +69,16 @@ When present in a URL, it is at the beginning, and it ends with "://".
 
 The scheme is the actual name of the scheme that precedes the "://".
 
-In other contexts, a Scheme is often referred to as a Protocol.
+What we are calling the Scheme here is also frequently referred to as
+the "protocol" elsewhere.
 
 ### Netloc
 Specifies the network location to connect to in terms of a hostname
 and optional port number.
 
-In other contexts, a Netloc is usually referred to as Authority or
-a Host.  This package uses Netloc to be consistent with the
-terminology used in Python's netlib package.
+What we are calling the Netloc here is usually referred to as the
+"authority" or "host" elsewhere.  We are using Netloc to be match the
+nomenclature used in Python's netlib package.
 
 ### Hostname
 Specifies the host to connect to.  It can be either a domain name or
@@ -90,8 +95,8 @@ colon.
 The portion of the full path that precedes the query part (if
 present).
 
-In other contexts, a Pathname may be referred to as a Path or a File
-Path.
+What we are calling the Pathname here is also frequently referred to
+as the "path" or "file path" elsewhere.
 
 ### Query Part and Query
 The Query Part is the portion of the full path that starts with a "?"
@@ -99,3 +104,31 @@ and includes all of the remaining characters in the full path part.
 
 The Query is the portion of the query part after (not including) the
 "?".
+
+## To Do
+
+### Make this into a usable Python distribution package
+
+Make this installable using pip with specifications of dependencies,
+compatible Python versions, etc.
+
+Not important before the functionality is sufficient too be useful to
+anyone though.
+
+### Figure out best representation of omitted component
+
+Possibly use None value, but possibly perfer custom null-objects that
+don't raise exceptions when sub-component properties are accessed.
+
+### Allow construction of URLs from components and components from sub-components
+
+Possibly allow and array of components to be passed as constructor
+argument for this case.
+
+### Make class instances formally read-only and usable as dict keys
+
+...
+
+### Implement "|" operator in cases where that makes sense
+
+...
