@@ -192,8 +192,39 @@ class PortPart:
 
 
 class Port:
-    def __init__(self, port_text):
-        self._init_text = port_text
+    def __init__(self, port_value):
+        if port_value is None or port_value == '':
+            self._number = None
+        elif isinstance(port_value, int):
+            # Values of other types such as bool are treated as actual
+            # or virtual sublasses of int so should be accepted but
+            # converted to the actual int type.
+            self._number = int(port_value)
+        elif isinstance(port_value, str):
+            self._number = int(port_value)
+        else:
+            raise TypeError(
+                f'port_value must be int or str type, not {port_value!r}')
+
+        if self._number is not None and not (0 <= self._number <= 0xffff):
+            raise ValueError(
+                'port_value must be between 0 and 65535 (inclusive)')
 
     def __str__(self):
-        return self._init_text
+        if self._number is None:
+            return ''
+        else:
+            return str(self._number)
+
+    def __int__(self):
+        if self._number is None:
+            raise ValueError(
+                'Null instance of Port cannot be converted to integer')
+        return self._number
+
+    @property
+    def number(self):
+        return self._number
+
+    def __bool__(self):
+        return self._number is not None
