@@ -127,8 +127,23 @@ argument for this case.
 
 ### Make class instances formally read-only and usable as dict keys
 
-...
+Possibly make them dataclasses
 
 ### Implement "|" operator in cases where that makes sense
 
+Probably just in cases where either the objects have the same class or
+one is a component or subcomponent of the other.
+
+### Add parsing and construction of form-encoded queries
+
 ...
+
+### Add support for various kinds of encoding and decoding
+
+...
+
+
+### Add support for effective port number, based on protocol
+
+Probably use a factory to instantiate URLs and components, and have a
+registry of protocol name matchers.
