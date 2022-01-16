@@ -1,6 +1,7 @@
 import pytest
 
-from urll import Hostname, Netloc, PortPart
+from urll import netloc
+from urll.component_bases import Hostname, PortPart
 
 
 NETLOC_TEXT = 'www.example.com:80'
@@ -10,7 +11,7 @@ class TestBuiltFromNetlocText:
 
     @pytest.fixture
     def netloc_inst(self):
-        return Netloc(NETLOC_TEXT)
+        return netloc(NETLOC_TEXT)
 
     def test_has_netloc_text_as_stringval(self, netloc_inst):
         assert str(netloc_inst) == NETLOC_TEXT

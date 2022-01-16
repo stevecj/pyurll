@@ -1,6 +1,7 @@
 import pytest
 
-from urll import Netloc, Origin, SchemePart
+from urll import origin
+from urll.component_bases import Netloc, SchemePart
 
 
 ORIGIN_TEXT = 'http://www.example.com:80'
@@ -10,7 +11,7 @@ class TestBuiltFromOriginText:
 
     @pytest.fixture
     def origin_inst(self):
-        return Origin(ORIGIN_TEXT)
+        return origin(ORIGIN_TEXT)
 
     def test_has_origin_text_as_stringval(self, origin_inst):
         assert str(origin_inst) == ORIGIN_TEXT

@@ -1,6 +1,6 @@
 import pytest
 
-from urll import Port
+from urll import port
 
 
 TYPICAL_PORT_NUM  = 123
@@ -17,22 +17,22 @@ class TestInvalidInitialization:
         lambda x: x))
     def test_rejects_invalid_type(self, init_arg):
         with pytest.raises(TypeError):
-            Port(init_arg)
+            port(init_arg)
 
     @pytest.mark.parametrize('init_arg', ('nope', '80.1'))
     def test_rejects_string_not_representing_integer(self, init_arg):
         with pytest.raises(ValueError):
-            Port(init_arg)
+            port(init_arg)
 
     @pytest.mark.parametrize('init_arg', (-1, 0x10000))
     def test_rejects_integer_out_of_range(self, init_arg):
         with pytest.raises(ValueError):
-            Port(init_arg)
+            port(init_arg)
 
     @pytest.mark.parametrize('init_arg', ('-1', '65536'))
     def test_rejects_string_repr_of_integer_out_of_range(self, init_arg):
         with pytest.raises(ValueError):
-            Port(init_arg)
+            port(init_arg)
 
 
 @pytest.mark.parametrize('init_arg', (None, ''))
@@ -40,7 +40,7 @@ class TestBuiltAsNullInstance:
 
     @pytest.fixture
     def port_inst(self, init_arg):
-        return Port(init_arg)
+        return port(init_arg)
 
     def test_is_falsy(self, port_inst):
         assert bool(port_inst) is False
@@ -61,7 +61,7 @@ class TestBuildWithMinimumValue:
 
     @pytest.fixture
     def port_inst(self, init_arg):
-        return Port(init_arg)
+        return port(init_arg)
 
     def test_is_truthy(self, port_inst):
         assert bool(port_inst) is True
@@ -81,7 +81,7 @@ class TestBuildWithMaximumValue:
 
     @pytest.fixture
     def port_inst(self, init_arg):
-        return Port(init_arg)
+        return port(init_arg)
 
     def test_is_truthy(self, port_inst):
         assert bool(port_inst) is True
@@ -101,7 +101,7 @@ class TestBuildWithTypicalValue:
 
     @pytest.fixture
     def port_inst(self, init_arg):
-        return Port(init_arg)
+        return port(init_arg)
 
     def test_is_truthy(self, port_inst):
         assert bool(port_inst) is True

@@ -1,6 +1,7 @@
 import pytest
 
-from urll import FullPath, Pathname, QueryPart
+from urll import full_path
+from urll.component_bases import Pathname, QueryPart
 
 
 FULL_PATH_TEXT = '/path/to/resource?key1=value1&key2=value2'
@@ -10,7 +11,7 @@ class TestBuiltFromFullPathText:
 
     @pytest.fixture
     def full_path_inst(self):
-        return FullPath(FULL_PATH_TEXT)
+        return full_path(FULL_PATH_TEXT)
 
     def test_has_full_path_text_as_stringval(self, full_path_inst):
         assert str(full_path_inst) == FULL_PATH_TEXT

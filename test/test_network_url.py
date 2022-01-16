@@ -1,6 +1,7 @@
 import pytest
 
-from urll import NetworkURL, Origin, FullPath
+from urll import network_url
+from urll.component_bases import Origin, FullPath
 
 
 NETWORK_URL_TEXT = (
@@ -13,7 +14,7 @@ class TestBuiltFromFullNetworkURLText:
 
     @pytest.fixture
     def netwk_url_inst(self):
-        return NetworkURL(NETWORK_URL_TEXT)
+        return network_url(NETWORK_URL_TEXT)
 
     def test_has_network_url_text_as_stringval(self, netwk_url_inst):
         assert str(netwk_url_inst) == NETWORK_URL_TEXT

@@ -1,6 +1,7 @@
 import pytest
 
-from urll import FragmentPart, URL, NetworkURL
+from urll import url
+from urll.component_bases import FragmentPart, NetworkURL
 
 
 FULL_URL_TEXT = (
@@ -13,7 +14,7 @@ class TestBuiltFromFullURLText:
 
     @pytest.fixture
     def url_inst(self):
-        return URL(FULL_URL_TEXT)
+        return url(FULL_URL_TEXT)
 
     def test_has_full_url_text_as_stringval(self, url_inst):
         assert str(url_inst) == FULL_URL_TEXT
